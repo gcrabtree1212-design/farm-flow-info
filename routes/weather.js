@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   try {
     const { lat, lon } = req.query;
 
-    if (lat === undefined || lat === null || lat === '' || lon === undefined || lon === null || lon === '') {
+    if (!lat || !lon) {
       return res.status(400).json({ error: "Missing required query parameters: lat and lon" });
     }
 
