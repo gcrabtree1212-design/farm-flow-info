@@ -1,3 +1,20 @@
+Name	Last commit message	Last commit date
+..
+alerts.js
+Add files via upload
+15 hours ago
+locations.js
+Add files via upload
+15 hours ago
+markets.js
+Add files via upload
+15 hours ago
+rainfall.js
+Add files via upload
+15 hours ago
+weather.js
+Refactor weather route for cleaner structure
+6 minutes ago
 
 const express = require("express");
 const router = express.Router();
@@ -18,6 +35,7 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+
 
 
 
