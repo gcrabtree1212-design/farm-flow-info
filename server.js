@@ -6,14 +6,24 @@ const rainfallRoutes = require("./routes/rainfall");
 const marketsRoutes = require("./routes/markets");
 const alertsRoutes = require("./routes/alerts");
 const locationsRoutes = require("./routes/locations");
+
 const app = express();
 const PORT = process.env.PORT || 8080;
+
 app.use(cors());
 app.use(bodyParser.json());
-app.get("/health", (req, res) = res.json({ status: "ok" }); });
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 app.use("/weather", weatherRoutes);
 app.use("/rainfall", rainfallRoutes);
 app.use("/markets", marketsRoutes);
 app.use("/alerts", alertsRoutes);
 app.use("/locations", locationsRoutes);
-app.listen(PORT, () = running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`running on port ${PORT}`);
+});
+
