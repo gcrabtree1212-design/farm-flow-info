@@ -12,7 +12,9 @@ router.get("/", async (req, res) => {
   try {
     const { lat, lon } = req.query;
 
-    if (lat === undefined || lat === '' || lon === undefined || lon === '') {
+<<<<<<copilot/fix-weather-routes-issue
+=======
+    
       return res.status(400).json({ error: "Missing required query parameters: lat and lon" });
     }
 
