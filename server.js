@@ -8,7 +8,8 @@ const alertsRoutes = require("./routes/alerts");
 const locationsRoutes = require("./routes/locations");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = Number(process.env.PORT) || 8080;
+const HOST = process.env.HOST || "0.0.0.0";
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,8 +24,18 @@ app.use("/markets", marketsRoutes);
 app.use("/alerts", alertsRoutes);
 app.use("/locations", locationsRoutes);
 
-app.listen(PORT, () => {
-  console.log(`running on port ${PORT}`);
+const server = app.listen(PORT, HOST, () => {
+  console.log(`running on ${HOST}:${PORT}`);
 });
 
+// Graceful logging and exit on errors
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Rejection:", err);
+  server.close(() => process.exit(1));
+});
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  server.close(() => process.exit(1));
+});
 
+module.exports = app;
