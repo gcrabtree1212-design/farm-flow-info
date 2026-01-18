@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-router.get("/search", (req, res) =
+router.get("/search", (req, res) => {
   const { query } = req.query;
   res.json({
     query,
